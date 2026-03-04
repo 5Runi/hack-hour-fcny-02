@@ -12,8 +12,17 @@ fizzbuzz(16);
 
 */
 
-const fizzbuzz = (num: number): (number | string)[] => {
-  return [];
+const fizzbuzz = (num: number): void => {
+  let results: (number | string)[] = [];
+  //let input = num -- to 1//need to decrement to 1
+  for (let i = 1; i < num;  i--) {
+    if (i % 5 === 0 && i % 3 === 0) results.push("fizzbuzz");
+    else if (i % 5 === 0) results.push("buzz");
+    else if (i % 3 === 0) results.push("fizz");
+    else results.push(i)
+    return results;
+  }
+  console.log(fizzbuzz(36));
 };
 
 /*
