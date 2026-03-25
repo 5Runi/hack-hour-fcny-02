@@ -31,6 +31,9 @@ class ListNode<T> {
 }
 
 const reverseLinkedList = <T>(head: ListNode<T> | null): ListNode<T> | null => {
+  let curr = head;
+  let prev: ListNode<T> | null = null;
+  let next: ListNode<T> | null = null;
   return null;
 };
 
