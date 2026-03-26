@@ -31,10 +31,23 @@ class ListNode<T> {
 }
 
 const reverseLinkedList = <T>(head: ListNode<T> | null): ListNode<T> | null => {
+  //to create a reversed linked list you need 3 pointers- the current to point to where you are, the prev to point to the previous and the next so that you don't drop the rest of the list (to hold the rest of the list when you break the connection)
   let curr = head;
   let prev: ListNode<T> | null = null;
   let next: ListNode<T> | null = null;
-  return null;
+  //create a while loop to traverse the link (as long as there a node at the current pointer)
+  while(curr !== null) {
+    //1.save the next node
+    next = curr.next
+    //2. reverse the link (the pointer flip)
+    curr.next = prev;
+    //3. move the pointers forward
+    prev = curr;
+    curr = next;
+  }
+  //if had linkedList wrapper would just return null;
+  //return 'prev' because its the new head of the reversed list
+  return prev;
 };
 
 export { ListNode, reverseLinkedList };
