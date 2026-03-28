@@ -50,8 +50,22 @@ fizzbuzzbazz(25);
 
 */
 
-// const fizzbuzzbazz = (num: number): (number | string)[] => {
-//   return [];
-// };
+const fizzbuzzbazz = (num: number): (number | string)[] => {
+  let resultsExt: (number|string) [] = []//initialize array to push into; add typescript
+  for (let i = 0; i <= num; i++){
+    if (i % 3 === 0 && i % 5 === 0 && i % 7 ===0 ) resultsExt.push("fizzbuzzbazz");
+    else if (i%5===0 && i%7===0) resultsExt.push("buzzbazz");
+    else if (i%3 ===0 && i%7===0) resultsExt.push("fizzbazz");
+    else if (i%3===0 && i%5===0) resultsExt.push("fizzbuzz");
+    else if (i%7===0) resultsExt.push("bazz");
+    else if (i%5===0) resultsExt.push("buzz");
+    else if (i%3===0) resultsExt.push("fizz");
+    else( resultsExt.push(i));
+  }
+  return resultsExt;
+};
 
-// export { fizzbuzz, fizzbuzzbazz };
+console.log(fizzbuzzbazz(77));
+console.log(fizzbuzzbazz(212));
+
+export { fizzbuzz, fizzbuzzbazz };
