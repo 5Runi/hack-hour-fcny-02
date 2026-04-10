@@ -14,6 +14,22 @@ whole array, the array will end up being sorted.
 */
 
 export const selectionSort = (arr: number[]): number[] => {
+  //Outer loop to traverse the array
+  for (let i = 0; i < arr.length -1; i++){
+    //initialize a variable to keep track of the index of the smallest value
+    let minIndex = i; 
+
+    //Inner loop to find the index of the minimum element in the unsorted portion of the array
+    for (let j = i+1; j < arr.length; j++) {
+      //if the current element is smaller than the element at minIndex, update minIndex
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j; //minIndex now holds the index of the smallest element in the unsorted part
+      }
+    }
+
+    //if minIndex is different from i; it means we've found a smaller element than arr[i]
+    //Swap the 
+  }
   return [];
 };
 

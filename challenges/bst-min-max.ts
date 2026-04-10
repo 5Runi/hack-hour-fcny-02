@@ -37,6 +37,9 @@ const bstMinMax = (root: BinarySearchTree): number => {
   return 0;
 };
 
+while (right !== null) {
+  
+}
 /*
 
 Extension: (not necessarily related in technique to above problem, but
