@@ -1,9 +1,10 @@
 /*
 
-Write a function called commonElements that takes in any number of arrays in the 
-argument. The arrays may contain both numbers and strings. It should return a new array
-with all the common elements (both numbers and/or strings) from the given input. 
-If there are no common numbers/strings, return "Nothing in Common!"
+Write a function called commonElements that takes in any number of arrays in the //input [] (multiple arrays)
+argument. The arrays may contain both numbers and strings. It should return a new array //[] numbers || strings
+with all the common elements (both numbers and/or strings) from the given input. //returns new one array with all matching 
+// elements unchanged in one []
+If there are no common numbers/strings, return "Nothing in Common!"/
 Assume there are no duplicates within the array.
 
 ex: 
@@ -16,9 +17,10 @@ commonElements(arr1, arr2, arr3) -> [2, 3, 2000, 'dog']
 After completing your initial approach, try refactoring your solution so that it completes in O(n) time.
 
 */
+//so in O(n) so probably a 2 pointer method would be something to try? Or would that not work with multiple arrays? 
 
 const commonElements = (
-  ...args: (string | number)[][]
+  ...args: (string | number)[][]//so here we have the spread operator showing the insides of the arrays
 ): (string | number)[] | 'Nothing in Common!' => {
   return [];
 };
