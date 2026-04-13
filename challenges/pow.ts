@@ -10,11 +10,11 @@
  */
 
 function pow(base: number, power: number): number {
-  let result = 1; //initiate result variable to hold the final answer; for multiplying identity value is 1;
+  let result = 1; //initiate result variable to hold the final answer; for multiplying identity value is 1; if you start at zero it would return zero because x*0=0
   if (power === 0) return 1; //base case: any number to the power of 0 is 1
   //x is the base(can be any number) // y is the power- non-negative integer (natural numbers)
-  //calculate x^y... what about negatives? so decrement power to 1 and multiply x *x that many times? 
-  for (let i = 0; i < power; i++) {//this is our counter
+  //calculate x^y... what about negatives? 
+  for (let i = 0; i < power; i++) {//this is our counter starting at 1 and going up to power
     result *= base;
   }; 
   return result; // Placeholder return value for type safety - replace for your solution
@@ -25,7 +25,8 @@ function pow(base: number, power: number): number {
  */
 
 function powRecurse(base: number, power: number): number {
-  return 0; // Placeholder return value for type safety - replace for your solution
+  if (power === 0) return 1;//base case to let recursive call know its done
+  return base * powRecurse(base, power -1); // power-1 allows the count down, otherwise it would be an infinite loop
 }
-
+console.log(powRecurse(3, 3));
 export { pow, powRecurse };
