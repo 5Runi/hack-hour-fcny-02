@@ -14,7 +14,7 @@ fizzbuzz(16);
 
 const fizzbuzz = (num: number): (number | string)[] => {
   let results: (number | string)[] = [];
-  //start at 1, increment up to and include num
+  //start at 0, increment up to and include num
   for (let i = 1; i <= num; i++) {
     if (i % 5 === 0 && i % 3 === 0) results.push("fizzbuzz");
     else if (i % 5 === 0) results.push("buzz");
@@ -24,7 +24,7 @@ const fizzbuzz = (num: number): (number | string)[] => {
   return results;
 };
 
-console.log(fizzbuzz(36));
+// console.log(fizzbuzz(36));
 
 /*
 
@@ -52,7 +52,7 @@ fizzbuzzbazz(25);
 
 const fizzbuzzbazz = (num: number): (number | string)[] => {
   let resultsExt: (number|string) [] = []//initialize array to push into; add typescript
-  for (let i = 0; i <= num; i++){
+  for (let i = 1; i <= num; i++) {
     if (i % 3 === 0 && i % 5 === 0 && i % 7 ===0 ) resultsExt.push("fizzbuzzbazz");
     else if (i%5===0 && i%7===0) resultsExt.push("buzzbazz");
     else if (i%3 ===0 && i%7===0) resultsExt.push("fizzbazz");
@@ -65,7 +65,7 @@ const fizzbuzzbazz = (num: number): (number | string)[] => {
   return resultsExt;
 };
 
-console.log(fizzbuzzbazz(77));
-console.log(fizzbuzzbazz(212));
+// console.log(fizzbuzzbazz(77));
+// console.log(fizzbuzzbazz(212));
 
 export { fizzbuzz, fizzbuzzbazz };
