@@ -32,7 +32,8 @@
   1     *4*
 
 */
-
+//this solution begins with using syntactic sugar to create the class BinaryTree and its constructor function that accepts a number as an argument
+//
 export class BinaryTree {
   value: number;
   left: BinaryTree | null;
@@ -45,6 +46,15 @@ export class BinaryTree {
   }
 }
 
-export const validBST = (tree: BinaryTree | null): boolean => {
-  return false;
+//this is our function that returns a boolean, we have also given it default parameters of -infinity and infinity
+
+export const validBST = (tree: BinaryTree | null, min = -Infinity, max = Infinity): boolean => {
+  //base case: if the node is null, we've reached the end of the branch and return true 
+  if (!tree) return true; //base case if no tree return true, why? Ensures we stop recursing and also- this condition is debatable, the only condition we are breaking this on is whether it is breaking the rule of min max sorting- 
+  if(tree.value < min || tree.value > max) return false; //check current node agains allowed min and max
+  return (
+    validBST(tree.left, min, tree.value) && validBST(tree.right, tree.value, max)
+    //recursively check: 1. left subtree: all nodes must have values less than the current node's value. Update max to the current nodes value. 
+    //2. the right subtree: all nodes must have values greater than the current node's value. Update min to the current node's value. 
+  );
 };
