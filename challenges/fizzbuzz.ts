@@ -14,7 +14,7 @@ fizzbuzz(16);
 
 const fizzbuzz = (num: number): (number | string)[] => {
   let results: (number | string)[] = [];
-  //start at 0, increment up to and include num
+  //start at 1, increment up to and include num
   for (let i = 1; i <= num; i++) {
     if (i % 5 === 0 && i % 3 === 0) results.push("fizzbuzz");
     else if (i % 5 === 0) results.push("buzz");

@@ -4,11 +4,19 @@
  * If no duplicates are found, return 0.
  * ex: [1,5,4,3,6,2,4,7] should return 4
  */
-
+//so first of all, sorting is expensive. And this seems fairly simple so i don't think it's necessary. I do think there is an argument to be made for splitting the array in half and using a 2 pointer method; also 2 for loops to check the values, one as i and one as j;
 export const duplicateNumber = (array: number[]): number => {
-  return 0;
+  //return a number- it insists that it will be just one number returned
+  for (let i =0; i < array.length; i++) {
+    for (let j = i + 1; j < array.length; j++){
+      if (array[j] === array[i]) return array[i];//return the element at i
+    } 
+ 
+  }
+     return 0;
 };
 
+console.log(duplicateNumber([1, 2, 4, 3, 4,]))
 /*
  * Extension:
  * You have an unsorted array of n + 1 positive integers, ranging from k to k +
@@ -17,7 +25,30 @@ export const duplicateNumber = (array: number[]): number => {
  * If no duplicates are found, return 0.
  * ex: [3, 4, 7, 6, 8, 5, 6] should return 6
  */
+//this is O(n^2)
+// export const duplicateNumberAdvanced = (array: number[]): number => {
+//   for (let n = 0; n < array.length; n++) {
+//     for (let k= n + 1; k < array.length; k++) {
+//       if (array[n] === array[k]) return array[n];
+//     }
+//   } 
+//   return 0;
+// };
 
+//Use a set to make O(n) time and O(n) space
 export const duplicateNumberAdvanced = (array: number[]): number => {
-  return 0;
+  
+  // const seen = new Set<number>();
+  // for (let i = 0; i <array.length; i++) {
+  //   if (seen.has(array[i])) return array[i]; //seen it before, it's a duplicate!
+  //   seen.add(array[i]); //first time remember it
+  // }
+  // return 0;
+  //use math
+  const n = array.length -1; //n + 1 elements ranging over n values
+  const k = Math.min(...array); //find where the range starts
+  const expectedSum = n * k + (n * (n-1))/2; //sum of k through k + (n-1)
+  const actualSum = array.reduce((acc, val) => acc + val, 0);
+  const duplicate = actualSum - expectedSum;
+  return duplicate > 0 ? duplicate: 0;
 };

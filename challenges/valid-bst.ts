@@ -58,3 +58,5 @@ export const validBST = (tree: BinaryTree | null, min = -Infinity, max = Infinit
     //2. the right subtree: all nodes must have values greater than the current node's value. Update min to the current node's value. 
   );
 };
+
+//time complexity in this case is O(n) where n is the number of nodes. Space complexity is different- where h is the height of the tree because we have to open up an execution context for every value. But in best case it will be a lesser value if tree is balanced then the 
