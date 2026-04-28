@@ -61,9 +61,29 @@ throttle and debounce) here: https://tomekdev.com/posts/throttle-vs-debounce-on-
 
 */
 
-export function throttle(
-  fn: (...args: any[]) => any,
-  delay: number
-): (...args: any[]) => any {
-  return () => {};
+export function throttle<T extends(...args: any[]) => any>(
+  //arguments is passing in as many arguments as we want and they will be bundled into an array//without this constraint, typescript
+  fn: T,
+  delay: number): (...args:Parameters<T>) => ReturnType<T> | undefined {
+//persists between calls via closure- this is what makes throttle "remember" when fn was last invoked across multiple calls to the returned function
+      let lastInvokeTime = 0;
+
+      return function (...args: Parameters<T>){
+        const now = Date.now();
+        //only invoke fn if we're outside the throttle window (enough time has passed)- calls that arrive too soon are silently dropped
+
+        if(now - lastInvokeTime >= delay) {
+          lastInvokeTime = now;
+          return fn(...args);
+        }
+//implicit if we're still inide the window, do nothing and return undefined
+
+  };
+
 }
+
+const scroll = () => console.log('scroll!');
+
+const throttledScroll = throttle(scroll, 1000); //throttle is just the wrapper that holds the function we actually want and creating the delay
+
+//we are tracking the leading edge of the window with this. But the extension is we are invoking the trailing edge- and cue it up once the window closes. So that you remember where the mouse stopped so that you can pick it up there- leading and trailing edge throttle: 
