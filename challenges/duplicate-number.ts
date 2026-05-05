@@ -37,18 +37,36 @@ console.log(duplicateNumber([1, 2, 4, 3, 4,]))
 
 //Use a set to make O(n) time and O(n) space
 export const duplicateNumberAdvanced = (array: number[]): number => {
-  
-  // const seen = new Set<number>();
-  // for (let i = 0; i <array.length; i++) {
-  //   if (seen.has(array[i])) return array[i]; //seen it before, it's a duplicate!
-  //   seen.add(array[i]); //first time remember it
-  // }
-  // return 0;
-  //use math
-  const n = array.length -1; //n + 1 elements ranging over n values
-  const k = Math.min(...array); //find where the range starts
-  const expectedSum = n * k + (n * (n-1))/2; //sum of k through k + (n-1)
-  const actualSum = array.reduce((acc, val) => acc + val, 0);
-  const duplicate = actualSum - expectedSum;
-  return duplicate > 0 ? duplicate: 0;
+  //Set solution more solid than math solution which could get messed up if there is more then one duplicate. Set solution will return the FIRST duplicate consistently
+  const seen = new Set<number>();
+  for (let i = 0; i <array.length; i++) {
+    if (seen.has(array[i])) return array[i]; //seen it before, it's a duplicate!
+    seen.add(array[i]); //first time remember it
+  }
+  return 0;
 };
+
+console.log(duplicateNumberAdvanced([6, 17, 16, 15, 13, 12, 13, 7, 8, 9, 10, 11, 14]))
+
+
+  //use math
+  function findDuplicateMathy (arr: number[]):number {
+    if (arr.length < 2) return 0; //edge case
+    const n = arr.length-1; //number of distinct values possible
+    const k = arr.reduce((min,val) => val< min ? val: min,arr[0]);//smallest value in the range could also use spreader but would overflow stack on large arrays
+    const last = k+n-1;//largest value in each range
+    const expectedSum = (n*(k+last))/2; //Gauss's formula
+    const actualSum = arr.reduce((sum, val) => sum + val, 0);
+    const duplicate = actualSum - expectedSum;
+    return duplicate > 0 ? duplicate: 0;
+  // }
+  // const n = array.length -1; //n + 1 elements ranging over n values
+  // //const k = Math.min(...array); //find where the range starts//So this could blow the stack if the array is too big. Replace with 
+  // const k = array.reduce((min, val) => val < min ? val: min, array[0])
+  // const expectedSum = n * k + (n * (n-1))/2; //sum of k through k + (n-1)
+  // const actualSum = array.reduce((acc, val) => acc + val, 0);
+  // const duplicate = actualSum - expectedSum;
+  // return duplicate > 0 ? duplicate: 0;
+}
+
+console.log(findDuplicateMathy([21, 5, 6, 9, 8, 7, 11, 11, 20, 19, 18, 17, 16, 15, 14, 13, 12, 10 ]));
