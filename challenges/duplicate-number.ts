@@ -47,7 +47,7 @@ export const duplicateNumberAdvanced = (array: number[]): number => {
 };
 
 console.log(duplicateNumberAdvanced([6, 17, 16, 15, 13, 12, 13, 7, 8, 9, 10, 11, 14]))
-
+ 
 
   //use math
   function findDuplicateMathy (arr: number[]):number {
