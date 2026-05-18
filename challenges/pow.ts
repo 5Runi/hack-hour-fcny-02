@@ -38,28 +38,36 @@ function pow(base: number, power: number): number {
  * 
  */
 
-function powRecurse(base: number, power: number): number {
-  let result;
-  if (power === 0) return 1;
-  else {
-    //need base to multiply by itself; power decrement; and to run powRecurse
-    result *= base;
-    power -= 1;
-    powRecurse(base, power)
-  }
-  return result; // Placeholder return value for type safety - replace for your solution
-}
+// function powRecurse(base: number, power: number): number {
+//   let result;
+//   if (power === 0) return 1;
+//   else {
+//     //need base to multiply by itself; power decrement; and to run powRecurse
+//     result *= base;
+//     power -= 1;
+//     powRecurse(base, power)
+//   }
+//   return result; // Placeholder return value for type safety - replace for your solution
+// }
 
+
+
+// * Example:
+// * powRecurse(2,4) => 2^4 = 16
+// * Rational: 2 * 2 * 2 * 2 = 16
 
 //  Kim's solution:
-function powRecurse(base: number, power: number): number {
+function powRecurse(base: number, power: number): number { // Base: 2, Power: 4 / Base: 2, Power: 3 / Base: 2, Power: 2 / Base: 2, Power: 1
   // Base case: any number raised to the power of 0 is 1
   if (power === 0) return 1;
   // Base case: any number raised to the power of 1 is the number itself
-  if (power === 1) return base;
+  if (power === 1) return base; // 
   // Recursive case: multiply base by the result of powRecurse with reduced power
-  return base * powRecurse(base, power - 1);
+  return base * powRecurse(base, power - 1); // 2 * powRecurse(2, 4 - 1) /  2 * 2 *  powRecurse(2, 3 - 1) / 2 * 2 * 2* powRecurse(2, 2 - 1) / 2 * 2 * 2* 2 / 
 }
+
+
+
 
 
 // Tail call optimized version:
