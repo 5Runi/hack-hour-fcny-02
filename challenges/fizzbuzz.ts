@@ -12,17 +12,32 @@ fizzbuzz(16);
 
 */
 
+
 const fizzbuzz = (num: number): (number | string)[] => {
-  let results: (number | string)[] = [];
-  //start at 1, increment up to and include num
-  for (let i = 1; i <= num; i++) {
-    if (i % 5 === 0 && i % 3 === 0) results.push("fizzbuzz");
-    else if (i % 5 === 0) results.push("buzz");
-    else if (i % 3 === 0) results.push("fizz");
-    else results.push(i);
+  let resultArr = [];
+  for(let i = 1; i <= num; i++) {
+    if (i%3 === 0 && i%5 === 0) {resultArr.push("fizzbuzz")}
+    else if (i%5 === 0) {resultArr.push("buzz")}
+    else if (i%3 === 0) {resultArr.push("fizz")}
+    else {resultArr.push(i)};
   }
-  return results;
+  return resultArr;
+  //Placeholder given: return [];
 };
+
+console.log(fizzbuzz(55));
+
+// const fizzbuzz = (num: number): (number | string)[] => {
+//   let results: (number | string)[] = [];
+//   //start at 1, increment up to and include num
+//   for (let i = 1; i <= num; i++) {
+//     if (i % 5 === 0 && i % 3 === 0) results.push("fizzbuzz");
+//     else if (i % 5 === 0) results.push("buzz");
+//     else if (i % 3 === 0) results.push("fizz");
+//     else results.push(i);
+//   }
+//   return results;
+// };
 
 // console.log(fizzbuzz(36));
 
@@ -50,20 +65,20 @@ fizzbuzzbazz(25);
 
 */
 
-const fizzbuzzbazz = (num: number): (number | string)[] => {
-  let resultsExt: (number|string) [] = []//initialize array to push into; add typescript
-  for (let i = 1; i <= num; i++) {
-    if (i % 3 === 0 && i % 5 === 0 && i % 7 ===0 ) resultsExt.push("fizzbuzzbazz");
-    else if (i%5===0 && i%7===0) resultsExt.push("buzzbazz");
-    else if (i%3 ===0 && i%7===0) resultsExt.push("fizzbazz");
-    else if (i%3===0 && i%5===0) resultsExt.push("fizzbuzz");
-    else if (i%7===0) resultsExt.push("bazz");
-    else if (i%5===0) resultsExt.push("buzz");
-    else if (i%3===0) resultsExt.push("fizz");
-    else( resultsExt.push(i));
-  }
-  return resultsExt;
-};
+// const fizzbuzzbazz = (num: number): (number | string)[] => {
+//   let resultsExt: (number|string) [] = []//initialize array to push into; add typescript
+//   for (let i = 1; i <= num; i++) {
+//     if (i % 3 === 0 && i % 5 === 0 && i % 7 ===0 ) resultsExt.push("fizzbuzzbazz");
+//     else if (i%5===0 && i%7===0) resultsExt.push("buzzbazz");
+//     else if (i%3 ===0 && i%7===0) resultsExt.push("fizzbazz");
+//     else if (i%3===0 && i%5===0) resultsExt.push("fizzbuzz");
+//     else if (i%7===0) resultsExt.push("bazz");
+//     else if (i%5===0) resultsExt.push("buzz");
+//     else if (i%3===0) resultsExt.push("fizz");
+//     else( resultsExt.push(i));
+//   }
+//   return resultsExt;
+// };
 
 // console.log(fizzbuzzbazz(77));
 // console.log(fizzbuzzbazz(212));
