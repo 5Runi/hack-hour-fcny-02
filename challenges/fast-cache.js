@@ -1,3 +1,4 @@
+"use strict";
 /*
  * Challenge: Implement a Memoization Function
  *
@@ -30,10 +31,8 @@
  *
  * Implement the `fastCache` function below:
  */
-
-type ArgTypes = string | number;
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fastCacheAdvanced = exports.fastCache = void 0;
 /**
  * Creates a memoized version of the provided function.
  *
@@ -43,35 +42,20 @@ type ArgTypes = string | number;
  * @param {function(T): R} fn - The function to be memoized.
  * @returns {function(T): R} A new function that caches the results of `fn`.
  */
-
-export const fastCache = <T extends ArgTypes, R>(
-  fn: (arg: T) => R
-): ((arg: T) => R) => {
-  const cache: Record<string, R> = {};
-  
-  return (arg:T):R => {
-    if (arg in cache) {
-      console.log(cache);
-      return cache[arg] as R;
-    }
-      const result = fn(arg);
-      cache[arg]= result;
-      return result;
-   
-  }
-  // return fn;
+var fastCache = function (fn) {
+    var cache = {};
+    return function (arg) {
+        if (arg in cache) {
+            console.log(cache);
+            return cache.arg;
+        }
+        var result = fn(arg);
+        cache.arg = result;
+        return result;
+    };
+    // return fn;
 };
-
-// const testMultiplier(n) = {
-//   return n*2
-// }
-
-// console.log(testMultiplier(2))
-// console.log(fastCache(testMultiplier(2)));
-
-
-type ExtendedTypes = ArgTypes | Object | ExtendedTypes[];
-
+exports.fastCache = fastCache;
 /**
  * Extension: Rewrite and improve fastCache to handle an unknown number of arguments, which can be
  * strings, numbers, or objects (including arrays).
@@ -98,8 +82,7 @@ type ExtendedTypes = ArgTypes | Object | ExtendedTypes[];
  * @param {function(...T): R} fn - The function to be memoized.
  * @returns {function(...T): R} A new function that caches the results of `fn`.
  */
-export const fastCacheAdvanced = <T extends ExtendedTypes, R>(
-  fn: (...args: T[]) => R
-): ((...args: T[]) => R) => {
-  return fn;
+var fastCacheAdvanced = function (fn) {
+    return fn;
 };
+exports.fastCacheAdvanced = fastCacheAdvanced;
